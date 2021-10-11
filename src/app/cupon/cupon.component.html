@@ -1,0 +1,4 @@
+<h1>Cupón</h1>
+<img *ngIf="isCuponDeactivated" src="https://cdn.fundgrube.com/wysiwyg/2021/triple-cupon-septiembre/triple-cupon-septiembre-landing-v1-mobile-es.jpg" class="img-fluid img-cupon mx-auto d-block" alt="Responsive image">
+<router-outlet (activate)="onActivate($event)" (deactivate)='onDeactivate($event)'></router-outlet>
+<button *ngIf="!isCuponDeactivated" type="button" class="btn btn-primary mt-4" (click)="generateCupon()">Nuevo Cupon</button>
