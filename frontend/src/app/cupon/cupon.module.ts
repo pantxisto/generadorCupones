@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { CuponRoutingModule } from './cupon-routing.module';
 import { CuponWidgetComponent } from '../common/cupon-widget/cupon-widget.component';
 import { CuponService } from './cupon.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CuponService } from './cupon.service';
   ],
   imports: [
     CommonModule,
-    CuponRoutingModule
+    CuponRoutingModule,
+    HttpClientModule
   ],
   providers: [CuponService],
 })

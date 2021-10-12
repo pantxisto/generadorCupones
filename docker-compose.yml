@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  generador.cupones.backend:
+    build: ./backend/
+    container_name: generador.cupones.backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/app/src
+      - /app/node_modules
+    networks: 
+      - generador.cupones.network
+    command: ["npm", "run", "start:dev"]
+  generador.cupones.frontend:
+    build: ./frontend/
+    container_name: generador.cupones.frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules
+    networks: 
+      - generador.cupones.network
+    depends_on:
+      - generador.cupones.backend
+    command: ["./wait-for-it.sh", "generador.cupones.backend:3000", "-t", "120", "--", "npm", "run", "start"]
+networks:
+  generador.cupones.network:
+    driver: bridge
